@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ratilservice.com/sitemap.xml
