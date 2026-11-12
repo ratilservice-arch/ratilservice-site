@@ -158,7 +158,8 @@
             <h2>عطل مفاجئ في جهازك؟ نحن هنا!</h2>
             <p style="color: #666; margin-bottom: 25px;">املأ البيانات السريعة وسيتم توجيه طلبك مباشرة عبر الواتساب لتحديد موعد الفحص التقني.</p>
             
-            <form id="maintenanceForm" onsubmit="sendWhatsApp(event)">
+            <!-- استخدام زر عادي نوعه button لتجنب أي مشاكل في المتصفحات -->
+            <form id="maintenanceForm" onsubmit="return false;">
                 <div class="form-group">
                     <label for="clientName">اسم الصالون أو العميل</label>
                     <input type="text" id="clientName" placeholder="مثال: صالون الجمال" required>
@@ -182,7 +183,7 @@
                     <textarea id="issueDesc" rows="3" placeholder="اشرح المشكلة باختصار أو اذكر العنوان..." required></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn">إرسال الطلب عبر واتساب</button>
+                <button type="button" onclick="sendToWhatsAppAndSheet()" class="submit-btn">إرسال الطلب عبر واتساب</button>
             </form>
         </div>
     </div>
@@ -196,13 +197,12 @@
     <script>
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwDBRVpuvl-JUwICAd8iZixntgdWbrZIk40iD_wjJOGF1Ow9ZhcPoVZSILJNAHzSIJQ/exec";
 
-    function sendWhatsApp(e) {
-        e.preventDefault();
-        
+    function sendToWhatsAppAndSheet() {
         const nameInput = document.getElementById('clientName');
         const deviceInput = document.getElementById('deviceType');
         const descInput = document.getElementById('issueDesc');
         
+        // التحقق من ملء الحقول
         if (!nameInput.value || !deviceInput.value || !descInput.value) {
             alert('الرجاء ملء جميع الحقول المطلوبة');
             return;
@@ -215,7 +215,7 @@
             device: deviceInput.value
         };
 
-        // إرسال البيانات للجدول في الخلفية
+        // 1. إرسال البيانات لجدول جوجل في الخلفية
         fetch(SCRIPT_URL, {
             method: 'POST',
             mode: 'no-cors',
@@ -223,10 +223,11 @@
             body: JSON.stringify(formData)
         }).catch(err => console.log('Sheet error:', err));
 
-        // توجيه العميل فوراً إلى الواتساب
+        // 2. تجهيز رسالة الواتساب والتحويل الفوري بفتح نافذة جديدة أو توجيه الصفحة
         const whatsappMessage = مرحباً Ratil serviceTech، لدي طلب صيانة:\nالعيادة/الاسم: ${formData.name}\nالجهاز: ${formData.device}\nالتفاصيل: ${formData.address};
         const whatsappURL = https://wa.me/213661314631?text=${encodeURIComponent(whatsappMessage)};
         
+        // استخدام window.open لفتح واتساب مباشرة دون تعليق
         window.location.href = whatsappURL;
     }
     </script>
