@@ -1,6 +1,7 @@
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import parse_qs, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -66,6 +67,27 @@ class PublishReadinessTests(unittest.TestCase):
         ]
         self.assertGreaterEqual(len(product_links), 3)
         self.assertTrue(all(attrs.get("href", "").startswith("https://wa.me/213661314631?") for attrs in product_links))
+
+    def test_12v_pump_product_has_image_and_whatsapp_order_icon(self):
+        product_name = "Pompe 12V plastique"
+        images = [
+            attrs for tag, attrs in self.elements
+            if tag == "img" and attrs.get("src") == "pompe_12v_plastique.jpg"
+        ]
+        self.assertTrue(images)
+        self.assertTrue(images[0].get("alt"))
+        self.assertTrue((ROOT / "pompe_12v_plastique.jpg").is_file())
+        self.assertGreater((ROOT / "pompe_12v_plastique.jpg").stat().st_size, 0)
+
+        links = [
+            attrs for tag, attrs in self.elements
+            if tag == "a" and attrs.get("data-product") == product_name
+        ]
+        self.assertEqual(len(links), 1)
+        self.assertTrue(links[0].get("href", "").startswith("https://wa.me/213661314631?"))
+        self.assertIn("واتساب", links[0].get("aria-label", ""))
+        self.assertTrue(links[0].get("aria-label"))
+        self.assertIn(product_name, parse_qs(urlsplit(links[0]["href"]).query).get("text", [""])[0])
 
     def test_contact_section_has_phone_and_whatsapp_actions(self):
         links = [attrs.get("href", "") for tag, attrs in self.elements if tag == "a"]
