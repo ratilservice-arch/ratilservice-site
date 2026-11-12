@@ -511,16 +511,33 @@
         <p style="font-size: 0.85rem;">جميع الحقوق محفوظة &copy; 2026 ratilservice.com</p>
     </footer>
 
-    <script>
-        function sendWhatsApp(e) {
-            e.preventDefault();
-            const name = document.getElementById('clientName').value;
-            const device = document.getElementById('deviceType').value;
-            const issue = document.getElementById('issueDesc').value;
-            const phone = "213000000000"; // ضع رقم واتساب الخاص بك هنا
-            const message = مرحباً Ratil serviceTech، لدي طلب صيانة:%0A- الاسم/الصالون: ${name}%0A- الجهاز: ${device}%0A- العطل: ${issue};
-            window.open(https://wa.me/${phone}?text=${message}, '_blank');
-        }
-    </script>
+  <script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwDBRVpuvl-JUwICAd8iZixntgdWbrZIk40iD_wjJOGF1Ow9ZhcPoVZSILJNAHzSIJQ/exec";
+
+function sendWhatsApp(e) {
+    e.preventDefault();
+    
+    const formData = {
+        name: document.getElementById('clientName').value,
+        address: document.getElementById('issueDesc').value,
+        phone: "213661314631",
+        device: document.getElementById('deviceType').value
+    };
+
+    fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+    }).then(() => {
+        const whatsappMessage = مرحباً Ratil serviceTech، لدي طلب صيانة:\nالعيادة: ${formData.name}\nالجهاز: ${formData.device};
+        const whatsappURL = https://wa.me/213661314631?text=${encodeURIComponent(whatsappMessage)};
+        window.location.href = whatsappURL;
+    }).catch(error => {
+        console.error('Error!', error);
+        alert('حدث خطأ أثناء الإرسال، يرجى المحاولة مرة أخرى.');
+    });
+}
+</script> 
 </body>
 </html>
