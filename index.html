@@ -104,7 +104,7 @@
             <h2>عطل مفاجئ في جهازك؟ نحن هنا!</h2>
             <p style="color: #666; margin-bottom: 25px;">املا البيانات السريعة وسيتم توجيه طلبك مباشرة عبر الواتساب لتحديد موعد الفحص أو التدخل التقني في أسرع وقت ممكن.</p>
             
-            <form id="maintenanceForm" onsubmit="return sendWhatsApp(event)">
+            <form id="maintenanceForm" onsubmit="event.preventDefault();">
                 <div class="form-group">
                     <label for="clientName">اسم الصالون أو العميل</label>
                     <input type="text" id="clientName" placeholder="مثال: صالون الجمال" required>
@@ -128,7 +128,7 @@
                     <textarea id="issueDesc" rows="3" placeholder="اشرح المشكلة التي تظهر في الجهاز أو العنوان..." required></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn">إرسال الطلب عبر واتساب</button>
+                <button type="button" onclick="sendWhatsApp()" class="submit-btn">إرسال الطلب عبر واتساب</button>
             </form>
         </div>
     </div>
@@ -142,21 +142,24 @@
     <script>
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwDBRVpuvl-JUwICAd8iZixntgdWbrZIk40iD_wjJOGF1Ow9ZhcPoVZSILJNAHzSIJQ/exec";
 
-    function sendWhatsApp(e) {
-        if (e) e.preventDefault();
-        
+    function sendWhatsApp() {
         const nameInput = document.getElementById('clientName');
         const deviceInput = document.getElementById('deviceType');
         const descInput = document.getElementById('issueDesc');
         
+        if (!nameInput.value || !deviceInput.value || !descInput.value) {
+            alert('الرجاء ملء جميع الحقول المطلوبة');
+            return;
+        }
+
         const formData = {
-            name: nameInput ? nameInput.value : "غير محدد",
-            address: descInput ? descInput.value : "غير محدد",
+            name: nameInput.value,
+            address: descInput.value,
             phone: "213661314631",
-            device: deviceInput ? deviceInput.value : "غير محدد"
+            device: deviceInput.value
         };
 
-        // إرسال البيانات للجدول في الخلفية دون انتظار لضمان سرعة التحويل
+        // إرسال البيانات للجدول في الخلفية
         fetch(SCRIPT_URL, {
             method: 'POST',
             mode: 'no-cors',
@@ -164,12 +167,11 @@
             body: JSON.stringify(formData)
         }).catch(err => console.log('Sheet error:', err));
 
-        // توجيه العميل فوراً إلى الواتساب بالرسالة الجاهزة
+        // توجيه العميل فوراً إلى الواتساب
         const whatsappMessage = مرحباً Ratil serviceTech، لدي طلب صيانة:\nالعيادة/الاسم: ${formData.name}\nالجهاز: ${formData.device}\nالتفاصيل: ${formData.address};
         const whatsappURL = https://wa.me/213661314631?text=${encodeURIComponent(whatsappMessage)};
         
         window.location.href = whatsappURL;
-        return false;
     }
     </script>
 </body>
