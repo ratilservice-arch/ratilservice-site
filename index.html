@@ -512,15 +512,24 @@
     </footer>
 
     <script>
-        function sendWhatsApp(e) {
-            e.preventDefault();
-            const name = document.getElementById('clientName').value;
-            const device = document.getElementById('deviceType').value;
-            const issue = document.getElementById('issueDesc').value;
-            const phone = "213000000000"; // ضع رقم واتساب الخاص بك هنا
-            const message = مرحباً Ratil serviceTech، لدي طلب صيانة:%0A- الاسم/الصالون: ${name}%0A- الجهاز: ${device}%0A- العطل: ${issue};
-            window.open(https://wa.me/${phone}?text=${message}, '_blank');
+    function sendWhatsApp(e) {
+        e.preventDefault();
+        
+        const nameInput = document.getElementById('clientName').value;
+        const deviceInput = document.getElementById('deviceType').value;
+        const descInput = document.getElementById('issueDesc').value;
+        
+        if (!nameInput || !deviceInput || !descInput) {
+            alert('الرجاء ملء جميع الحقول المطلوبة');
+            return;
         }
+
+        const phone = "213661314631";
+        const whatsappMessage = مرحباً Ratil serviceTech، لدي طلب صيانة:\n\n👤 الاسم/الصالون: ${nameInput}\n🔧 الجهاز: ${deviceInput}\n📝 تفاصيل العطل: ${descInput};
+        
+        const whatsappURL = https://wa.me/${phone}?text=${encodeURIComponent(whatsappMessage)};
+        window.open(whatsappURL, '_blank');
+    }
     </script>
 </body>
 </html>
