@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RATIL serviceTech - صيانة أجهزة التجميل والعناية بالبشرة</title>
     <style>
+        :root {
+            --primary-color: #111;
+            --accent-color: #25d366;
+            --bg-light: #f9f9f9;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9f9f9;
+            background-color: var(--bg-light);
             margin: 0;
             padding: 0;
             color: #333;
@@ -15,72 +20,116 @@
             text-align: right;
         }
         header {
-            background-color: #111;
+            background-color: var(--primary-color);
             color: #fff;
             padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo h2 {
+            margin: 0;
+            color: #fff;
+            font-size: 1.4rem;
         }
         nav a {
             color: #fff;
             text-decoration: none;
             margin-left: 20px;
             font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--accent-color);
+        }
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('logo.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .hero-section p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: #ddd;
         }
         .container {
             max-width: 800px;
-            margin: 40px auto;
+            margin: -40px auto 40px;
             padding: 20px;
+            position: relative;
+            z-index: 10;
         }
         .maintenance-box {
             background: #fff;
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
         .maintenance-box h2 {
             margin-top: 0;
             color: #111;
+            font-size: 1.5rem;
         }
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
         .form-group label {
             display: block;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-size: 0.95rem;
+            color: #444;
         }
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
+            padding: 14px 15px;
             border: 1px solid #ddd;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 1rem;
             box-sizing: border-box;
+            background-color: #fafafa;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            background-color: #fff;
         }
         .submit-btn {
-            background-color: #25d366;
+            background-color: var(--accent-color);
             color: white;
             border: none;
             width: 100%;
-            padding: 15px;
+            padding: 16px;
             font-size: 1.1rem;
             font-weight: bold;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
         .submit-btn:hover {
             background-color: #1ebe5d;
+            transform: translateY(-2px);
         }
         footer {
-            background-color: #111;
+            background-color: var(--primary-color);
             color: #fff;
             text-align: center;
-            padding: 20px;
-            margin-top: 50px;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+        footer p {
+            margin: 5px 0;
         }
     </style>
 </head>
@@ -88,23 +137,28 @@
 
     <header>
         <div class="logo">
-            <h2 style="margin:0; color:#fff;">RATIL serviceTech</h2>
+            <h2>RATIL serviceTech</h2>
         </div>
         <nav>
             <a href="#">الرئيسية</a>
             <a href="#">طلب صيانة</a>
             <a href="#">المتجر</a>
             <a href="#">مقالات ونصائح</a>
-            <a href="#">تواصل معنا</a>
+            <a href="#contact">تواصل معنا</a>
         </nav>
     </header>
+
+    <div class="hero-section">
+        <h1>صيانة أجهزة التجميل والعناية بالبشرة</h1>
+        <p>خلي صالونك ديما جديد مع Ratil - خدمة احترافية، سريعة ومضمونة لجميع أجهزة العيادات والصالونات.</p>
+    </div>
 
     <div class="container">
         <div class="maintenance-box">
             <h2>عطل مفاجئ في جهازك؟ نحن هنا!</h2>
-            <p style="color: #666; margin-bottom: 25px;">املا البيانات السريعة وسيتم توجيه طلبك مباشرة عبر الواتساب لتحديد موعد الفحص أو التدخل التقني في أسرع وقت ممكن.</p>
+            <p style="color: #666; margin-bottom: 25px;">املأ البيانات السريعة وسيتم توجيه طلبك مباشرة عبر الواتساب لتحديد موعد الفحص التقني.</p>
             
-            <form id="maintenanceForm" onsubmit="event.preventDefault();">
+            <form id="maintenanceForm" onsubmit="sendWhatsApp(event)">
                 <div class="form-group">
                     <label for="clientName">اسم الصالون أو العميل</label>
                     <input type="text" id="clientName" placeholder="مثال: صالون الجمال" required>
@@ -125,24 +179,26 @@
 
                 <div class="form-group">
                     <label for="issueDesc">وصف العطل باختصار أو العنوان</label>
-                    <textarea id="issueDesc" rows="3" placeholder="اشرح المشكلة التي تظهر في الجهاز أو العنوان..." required></textarea>
+                    <textarea id="issueDesc" rows="3" placeholder="اشرح المشكلة باختصار أو اذكر العنوان..." required></textarea>
                 </div>
 
-                <button type="button" onclick="sendWhatsApp()" class="submit-btn">إرسال الطلب عبر واتساب</button>
+                <button type="submit" class="submit-btn">إرسال الطلب عبر واتساب</button>
             </form>
         </div>
     </div>
 
     <footer id="contact">
         <h3 style="color: #fff; margin-bottom: 10px;">RATIL serviceTech</h3>
-        <p style="margin-bottom: 15px;">صيانة أجهزة التجميل والعناية بالبشرة - خلي صالونك ديما جديد مع Ratil</p>
-        <p style="font-size: 0.85rem;">جميع الحقوق محفوظة &copy; 2026 ratilservice.com</p>
+        <p style="margin-bottom: 10px; color: #ccc;">صيانة أجهزة التجميل والعناية بالبشرة - خلي صالونك ديما جديد مع Ratil</p>
+        <p style="font-size: 0.85rem; color: #888;">جميع الحقوق محفوظة &copy; 2026 ratilservice.com</p>
     </footer>
 
     <script>
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwDBRVpuvl-JUwICAd8iZixntgdWbrZIk40iD_wjJOGF1Ow9ZhcPoVZSILJNAHzSIJQ/exec";
 
-    function sendWhatsApp() {
+    function sendWhatsApp(e) {
+        e.preventDefault();
+        
         const nameInput = document.getElementById('clientName');
         const deviceInput = document.getElementById('deviceType');
         const descInput = document.getElementById('issueDesc');
