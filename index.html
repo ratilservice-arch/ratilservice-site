@@ -1,39 +1,8 @@
 <!DOCTYPE html>
-<html lang="ar-DZ" dir="rtl">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="RATIL serviceTech في مستغانم لصيانة أجهزة التجميل والليزر والهيدرافيشل والكافيتيشن، وتوفير قطع الغيار والملحقات.">
-    <meta name="theme-color" content="#111827">
-    <link rel="canonical" href="https://ratilservice.com/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="RATIL serviceTech - صيانة أجهزة التجميل">
-    <meta property="og:description" content="صيانة احترافية لأجهزة التجميل والعناية بالبشرة وقطع الغيار في الجزائر.">
-    <meta property="og:url" content="https://ratilservice.com/">
-    <meta property="og:image" content="https://ratilservice.com/logo.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="RATIL serviceTech - صيانة أجهزة التجميل">
-    <meta name="twitter:description" content="صيانة أجهزة الليزر والهيدرافيشل والكافيتيشن وقطع الغيار.">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "RATIL serviceTech",
-      "url": "https://ratilservice.com/",
-      "image": "https://ratilservice.com/logo.jpg",
-      "telephone": "+213661314631",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Mostaganem",
-        "addressCountry": "DZ"
-      },
-      "areaServed": { "@type": "Country", "name": "Algeria" }
-    }
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://images.unsplash.com">
     <title>RATIL serviceTech - صيانة أجهزة التجميل والعناية بالبشرة</title>
     <!-- أيقونة الموقع (Favicon) -->
     <link rel="icon" type="image/jpeg" href="logo-icon.jpg">
@@ -89,27 +58,6 @@
         .logo-container img {
             height: 45px;
             object-fit: contain;
-        }
-
-        .nav-toggle {
-            display: none;
-            min-width: 44px;
-            min-height: 44px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 10px;
-            background: transparent;
-            color: #fff;
-            font-size: 1.25rem;
-            cursor: pointer;
-        }
-
-        .nav-toggle:focus-visible,
-        nav a:focus-visible,
-        .card-btn:focus-visible,
-        .product-whatsapp:focus-visible,
-        .btn-submit:focus-visible {
-            outline: 3px solid #6ee7b7;
-            outline-offset: 3px;
         }
 
         nav ul {
@@ -234,7 +182,6 @@
             padding: 80px 5%;
             max-width: 1200px;
             margin: 0 auto;
-            scroll-margin-top: 88px;
         }
 
         .section-title {
@@ -313,20 +260,6 @@
             background: var(--primary-dark);
         }
 
-        .form-status {
-            min-height: 1.5em;
-            margin: 10px 0;
-            color: var(--primary-dark);
-            font-weight: 600;
-        }
-
-        .form-note {
-            margin-top: 10px;
-            color: #4b5563;
-            font-size: 0.85rem;
-            line-height: 1.6;
-        }
-
         /* بطاقات المتجر والمقالات */
         .cards-grid {
             display: grid;
@@ -348,51 +281,6 @@
 
         .card:hover {
             transform: translateY(-5px);
-        }
-
-        .product-card {
-            padding: 0;
-        }
-
-        .product-image {
-            display: block;
-            width: 100%;
-            height: 280px;
-            aspect-ratio: 1 / 1;
-            object-fit: contain;
-            background: #fff;
-        }
-
-        .product-info {
-            display: flex;
-            flex: 1;
-            flex-direction: column;
-            padding: 20px 22px 22px;
-        }
-
-        .product-info p {
-            margin-bottom: 18px;
-        }
-
-        .product-whatsapp {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            align-self: flex-start;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: #25d366;
-            color: #fff;
-            font-size: 1.6rem;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .product-whatsapp:hover {
-            background: #128c7e;
-            color: #fff;
-            transform: translateY(-2px);
         }
 
         .card-icon {
@@ -437,150 +325,34 @@
             color: #fff;
         }
 
-        .article-more {
-            color: #374151;
-            line-height: 1.7;
-            margin-bottom: 18px;
-        }
-
-        .article-more summary {
-            color: var(--primary-dark);
-            cursor: pointer;
-            font-weight: 700;
-            padding: 8px 0;
-        }
-
-        .article-more:focus-within {
-            outline: 2px solid var(--primary);
-            outline-offset: 3px;
-        }
-
         footer {
             background: var(--dark-bg);
             color: #9ca3af;
             text-align: center;
             padding: 30px 5%;
             margin-top: 60px;
-            scroll-margin-top: 88px;
-        }
-
-        .contact-actions {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 20px 0;
-        }
-
-        .contact-actions a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            min-height: 44px;
-            padding: 10px 18px;
-            border-radius: 9px;
-            background: var(--primary);
-            color: #fff;
-            font-weight: 700;
-            text-decoration: none;
-        }
-
-        .contact-actions a:hover {
-            background: var(--primary-dark);
         }
 
         @media (max-width: 768px) {
-            header {
-                padding: 8px 5%;
-            }
-
-            .nav-toggle {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            nav {
-                position: static;
-            }
-
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                inset-inline: 0;
-                flex-direction: column;
-                gap: 0;
-                padding: 8px 5% 16px;
-                background: rgba(17, 24, 39, 0.98);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-                box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-            }
-
-            nav ul.is-open {
-                display: flex;
-            }
-
-            nav li a {
-                min-height: 44px;
-                padding: 10px 4px;
-            }
-
-            .maintenance-box {
-                grid-template-columns: 1fr;
-                padding: 24px;
-            }
-
-            .hero p {
-                font-size: 1rem;
-                margin-bottom: 28px;
-            }
-
-            .quick-icons-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-
-            .icon-card {
-                padding: 18px 14px;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                scroll-behavior: auto !important;
-                transition-duration: 0.01ms !important;
-            }
+            nav ul { display: none; }
+            .maintenance-box { grid-template-columns: 1fr; }
         }
     </style>
-    <noscript>
-        <style>
-            @media (max-width: 768px) {
-                .nav-toggle { display: none !important; }
-                nav ul { display: flex !important; position: static !important; flex-direction: column; }
-            }
-        </style>
-    </noscript>
 </head>
 <body>
 
     <!-- الشريط العلوي -->
     <header>
-        <a href="#home" class="logo-container" aria-label="RATIL serviceTech — الرئيسية">
+        <a href="#home" class="logo-container">
             <img src="logo.jpg" alt="RATIL serviceTech">
         </a>
-        <button class="nav-toggle" id="navToggle" type="button" aria-label="فتح قائمة التنقل" aria-controls="primaryNav" aria-expanded="false">
-            <i class="fa-solid fa-bars" aria-hidden="true"></i>
-        </button>
-        <nav aria-label="التنقل الرئيسي">
-            <ul id="primaryNav">
-                <li><a href="#home"><i class="fa-solid fa-house" aria-hidden="true"></i> الرئيسية</a></li>
-                <li><a href="#services"><i class="fa-solid fa-microscope" aria-hidden="true"></i> الأجهزة المدعومة</a></li>
-                <li><a href="#maintenance"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i> طلب صيانة</a></li>
-                <li><a href="#store"><i class="fa-solid fa-store" aria-hidden="true"></i> المتجر</a></li>
-                <li><a href="#articles"><i class="fa-solid fa-newspaper" aria-hidden="true"></i> مقالات ونصائح</a></li>
-                <li><a href="#contact"><i class="fa-solid fa-phone" aria-hidden="true"></i> تواصل معنا</a></li>
+        <nav>
+            <ul>
+                <li><a href="#home"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
+                <li><a href="#maintenance"><i class="fa-solid fa-screwdriver-wrench"></i> طلب صيانة</a></li>
+                <li><a href="#store"><i class="fa-solid fa-store"></i> المتجر</a></li>
+                <li><a href="#articles"><i class="fa-solid fa-newspaper"></i> مقالات ونصائح</a></li>
+                <li><a href="#contact"><i class="fa-solid fa-phone"></i> تواصل معنا</a></li>
             </ul>
         </nav>
     </header>
@@ -621,36 +393,7 @@
         </div>
     </section>
 
-    <!-- الأجهزة المدعومة -->
-    <section id="services" class="content-section" aria-labelledby="servicesTitle">
-        <div class="section-title">
-            <h2 id="servicesTitle">الأجهزة التي نخدمها</h2>
-            <div class="line"></div>
-            <p>نستقبل طلبات صيانة أجهزة التجميل والعناية بالبشرة، ويُحدد التشخيص بعد فحص الجهاز وموديله.</p>
-        </div>
-        <div class="cards-grid">
-            <article class="card">
-                <div class="card-icon"><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
-                <h3>أجهزة الليزر</h3>
-                <p>فحص أعطال أجهزة إزالة الشعر وأنظمة التبريد والمقابض وملحقاتها.</p>
-                <a href="#maintenance" class="card-btn">اطلب فحص جهاز ليزر</a>
-            </article>
-            <article class="card">
-                <div class="card-icon"><i class="fa-solid fa-droplet" aria-hidden="true"></i></div>
-                <h3>أجهزة الهيدرافيشيال</h3>
-                <p>صيانة أجهزة تنظيف البشرة متعددة الوظائف ومضخاتها ورؤوسها وملحقاتها.</p>
-                <a href="#maintenance" class="card-btn">اطلب فحص هيدرافيشيال</a>
-            </article>
-            <article class="card">
-                <div class="card-icon"><i class="fa-solid fa-sliders" aria-hidden="true"></i></div>
-                <h3>الكافيتيشن وأجهزة العناية</h3>
-                <p>استفسر عن صيانة أجهزة نحت القوام والعناية بالبشرة بحسب الموديل والعطل.</p>
-                <a href="#maintenance" class="card-btn">استفسر عن الصيانة</a>
-            </article>
-        </div>
-    </section>
-
-    <!-- قسم طلب الصيانة -->
+    <!-- قسم طلب الصيانة (مع خانات الاسم، الهاتف، العنوان، الجهاز، والعطل) -->
     <section id="maintenance" class="content-section">
         <div class="section-title">
             <h2>طلب صيانة جهاز</h2>
@@ -668,35 +411,42 @@
                     <li><i class="fa-solid fa-check-circle" style="color: var(--primary);"></i> ضمان على الصيانة وقطع الغيار</li>
                 </ul>
             </div>
-            <form id="maintenanceForm" action="https://wa.me/213661314631" method="get" target="_blank" rel="noopener noreferrer">
+            
+            <form id="maintenanceForm" onsubmit="sendWhatsApp(event)">
                 <div class="form-group">
-                    <label for="clientName">اسم الصالون أو العميل</label>
-                    <input type="text" id="clientName" required autocomplete="organization" placeholder="مثال: صالون الجمال">
+                    <label>اسم الصالون أو العميل</label>
+                    <input type="text" id="clientName" required placeholder="مثال: صالون الجمال">
                 </div>
+
                 <div class="form-group">
-                    <label for="deviceType">نوع الجهاز</label>
-                    <select id="deviceType" required>
-                        <option value="" disabled selected>اختر نوع الجهاز</option>
+                    <label>رقم الهاتف</label>
+                    <input type="tel" id="clientPhone" required placeholder="مثال: 0661314631">
+                </div>
+
+                <div class="form-group">
+                    <label>العنوان / المدينة</label>
+                    <input type="text" id="clientAddress" required placeholder="مثال: وهران، الجزائر">
+                </div>
+
+                <div class="form-group">
+                    <label>نوع الجهاز</label>
+                    <select id="deviceType">
                         <option value="جهاز ليزر إزالة الشعر">جهاز ليزر إزالة الشعر</option>
                         <option value="جهاز هيدرافيشل (Hydrafacial)">جهاز هيدرافيشل (Hydrafacial)</option>
                         <option value="جهاز تخسيس / كافيتيشن">جهاز تخسيس / كافيتيشن</option>
                         <option value="جهاز عناية بالبشرة آخر">جهاز عناية بالبشرة آخر</option>
                     </select>
                 </div>
+
                 <div class="form-group">
-                    <label for="issueDesc">وصف العطل باختصار</label>
+                    <label>وصف العطل باختصار</label>
                     <textarea id="issueDesc" rows="3" required placeholder="اشرح المشكلة التي تظهر في الجهاز..."></textarea>
                 </div>
-                <input type="hidden" id="whatsappMessage" name="text" value="">
-                <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+
                 <button type="submit" class="btn-submit">
-                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> إرسال الطلب عبر واتساب
+                    <i class="fa-brands fa-whatsapp"></i> إرسال الطلب عبر واتساب
                 </button>
-                <p class="form-note">لن يحفظ الموقع بياناتك؛ ستُفتح رسالة WhatsApp لتراجعها وترسلها بنفسك.</p>
             </form>
-            <noscript>
-                <p>يمكنك التواصل مباشرةً عبر <a href="https://wa.me/213661314631" target="_blank" rel="noopener noreferrer">WhatsApp</a>.</p>
-            </noscript>
         </div>
     </section>
 
@@ -713,7 +463,7 @@
                     <h3>فلاتر المياه والتبريد</h3>
                     <p>فلاتر أصلية لحماية أنظمة التبريد في أجهزة الليزر وضمان عدم ارتفاع حرارة المقبض.</p>
                 </div>
-                <a href="https://wa.me/213661314631?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20RATIL%20serviceTech%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%81%D9%84%D8%A7%D8%AA%D8%B1%20%D8%A7%D9%84%D9%85%D9%8A%D8%A7%D9%87%20%D9%88%D8%A7%D9%84%D8%AA%D8%A8%D8%B1%D9%8A%D8%AF.%20%D9%85%D8%A7%20%D8%A7%D9%84%D9%85%D9%88%D8%AF%D9%8A%D9%84%D8%A7%D8%AA%20%D8%A7%D9%84%D9%85%D8%AA%D9%88%D9%81%D8%B1%D8%A9%D9%9F" class="card-btn" data-product="فلاتر المياه والتبريد" target="_blank" rel="noopener noreferrer">اطلب القطعة عبر واتساب</a>
+                <a href="#contact" class="card-btn">اطلب القطعة الآن</a>
             </div>
             <div class="card">
                 <div>
@@ -721,7 +471,7 @@
                     <h3>مقابض ورؤوس الهيدرافيشل</h3>
                     <p>رؤوس شفط، أنابيب توصيل، ومقابض بديلة متوافقة مع مختلف موديلات العناية بالبشرة.</p>
                 </div>
-                <a href="https://wa.me/213661314631?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20RATIL%20serviceTech%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%85%D9%82%D8%A7%D8%A8%D8%B6%20%D9%88%D8%B1%D8%A4%D9%88%D8%B3%20%D8%A7%D9%84%D9%87%D9%8A%D8%AF%D8%B1%D8%A7%D9%81%D9%8A%D8%B4%D9%84.%20%D9%85%D8%A7%20%D8%A7%D9%84%D9%85%D8%AA%D9%88%D9%81%D8%B1%20%D9%84%D8%AC%D9%87%D8%A7%D8%B2%D9%8A%D8%9F" class="card-btn" data-product="مقابض ورؤوس الهيدرافيشيال" target="_blank" rel="noopener noreferrer">استفسر عن التوفر عبر واتساب</a>
+                <a href="#contact" class="card-btn">استفسر عن التوفر</a>
             </div>
             <div class="card">
                 <div>
@@ -729,18 +479,8 @@
                     <h3>نظارات حماية الليزر</h3>
                     <p>نظارات طبية معتمدة لحماية المختصة والعميلة أثناء جلسات الليزر بمختلف الأطوال الموجية.</p>
                 </div>
-                <a href="https://wa.me/213661314631?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20RATIL%20serviceTech%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%86%D8%B8%D8%A7%D8%B1%D8%A7%D8%AA%20%D8%AD%D9%85%D8%A7%D9%8A%D8%A9%20%D8%A7%D9%84%D9%84%D9%8A%D8%B2%D8%B1%20%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%B3%D8%A8%D8%A9%20%D9%84%D8%AC%D9%87%D8%A7%D8%B2%D9%8A." class="card-btn" data-product="نظارات حماية الليزر" target="_blank" rel="noopener noreferrer">اطلب القطعة عبر واتساب</a>
+                <a href="#contact" class="card-btn">اطلب القطعة الآن</a>
             </div>
-            <article class="card product-card">
-                <img class="product-image" src="pompe_12v_plastique.jpg" alt="Pompe 12V plastique — مضخة كهربائية تظهر على ملصقها علامة DC12V" width="1512" height="1512" loading="lazy" decoding="async">
-                <div class="product-info">
-                    <h3 lang="fr" dir="ltr">Pompe 12V plastique</h3>
-                    <p>للاستفسار عن السعر والتوفر، اضغط أيقونة واتساب لطلب المنتج.</p>
-                    <a href="https://wa.me/213661314631?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20RATIL%20serviceTech%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%B7%D9%84%D8%A8%20Pompe%2012V%20plastique.%20%D9%87%D9%84%20%D9%87%D9%8A%20%D9%85%D8%AA%D9%88%D9%81%D8%B1%D8%A9%D8%9F%20%D9%88%D9%85%D8%A7%20%D8%B3%D8%B9%D8%B1%D9%87%D8%A7%D8%9F" class="product-whatsapp" data-product="Pompe 12V plastique" aria-label="استفسر عن سعر Pompe 12V plastique واطلبها عبر واتساب" title="استفسر عن السعر واطلب عبر واتساب" target="_blank" rel="noopener noreferrer">
-                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </article>
         </div>
     </section>
 
@@ -756,10 +496,6 @@
                     <div class="card-icon"><i class="fa-solid fa-droplet"></i></div>
                     <h3>أهمية تغيير الماء المقطر في أجهزة الليزر</h3>
                     <p>تعرف على المدة المثالية لتغيير المياه المقطرة وكيف يحمي ذلك عدسة الليزر من التلف المكلف.</p>
-                    <details class="article-more">
-                        <summary>اقرأ نصيحة السلامة</summary>
-                        <p>تختلف نوعية المياه ومواعيد الاستبدال حسب الطراز. اتبع دليل الشركة المصنّعة، ولا تشغّل الجهاز عند وجود تسريب أو ارتفاع غير طبيعي في الحرارة؛ اطلب فحصًا فنيًا.</p>
-                    </details>
                 </div>
                 <a href="#maintenance" class="card-btn">احجز صيانة وقائية</a>
             </div>
@@ -768,10 +504,6 @@
                     <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
                     <h3>حماية أجهزة الصالون من تذبذب الكهرباء</h3>
                     <p>دليل عملي لاختيار منظم الجهد (Stabilizer) المناسب لحماية اللوحة الأم لأجهزة التجميل.</p>
-                    <details class="article-more">
-                        <summary>اقرأ نصيحة السلامة</summary>
-                        <p>قارن جهد وقدرة منظم الجهد ببيانات لوحة الجهاز، وراعِ تيار بدء التشغيل والتأريض. لا توصل الجهاز بمثبت غير مطابق؛ استعن بفني كهربائي مؤهل عند الشك.</p>
-                    </details>
                 </div>
                 <a href="#contact" class="card-btn">استشر المختص</a>
             </div>
@@ -780,10 +512,6 @@
                     <div class="card-icon"><i class="fa-solid fa-sparkles"></i></div>
                     <h3>تنظيف وتعقيم رؤوس الهيدرافيشل بعد كل جلسة</h3>
                     <p>خطوات بسيطة تمنع انسداد المضخات الداخلية وتحافظ على قوة الشفط لأطول فترة ممكنة.</p>
-                    <details class="article-more">
-                        <summary>اقرأ نصيحة السلامة</summary>
-                        <p>استخدم فقط سائل التنظيف والطريقة الموصى بهما لطراز جهازك. لا تغمر الموصلات الكهربائية ولا تستخدم مذيبات غير معتمدة، واتبع دليل الشركة المصنّعة.</p>
-                    </details>
                 </div>
                 <a href="#contact" class="card-btn">تواصل معنا</a>
             </div>
@@ -791,17 +519,38 @@
     </section>
 
     <!-- التذييل -->
-    <footer id="contact" aria-labelledby="contactTitle">
-        <h3 id="contactTitle" style="color: #fff; margin-bottom: 10px;">RATIL serviceTech</h3>
-        <p style="margin-bottom: 8px;">خلي صالونك ديما جديد مع Ratil - صيانة أجهزة التجميل والعناية بالبشرة</p>
-        <p>مستغانم، الجزائر</p>
-        <div class="contact-actions" aria-label="طرق التواصل">
-            <a href="tel:+213661314631"><i class="fa-solid fa-phone" aria-hidden="true"></i> 0661 31 46 31</a>
-            <a href="https://wa.me/213661314631" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> تواصل عبر واتساب</a>
-        </div>
+    <footer id="contact">
+        <h3 style="color: #fff; margin-bottom: 10px;">RATIL serviceTech</h3>
+        <p style="margin-bottom: 15px;">خلي صالونك ديما جديد مع Ratil - صيانة أجهزة التجميل والعناية بالبشرة</p>
         <p style="font-size: 0.85rem;">جميع الحقوق محفوظة &copy; 2026 ratilservice.com</p>
     </footer>
 
-    <script src="site.js" defer></script>
+    <!-- سكريبت إرسال الواتساب الآمن والمباشر -->
+    <script>
+    function sendWhatsApp(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('clientName').value;
+        const phoneInput = document.getElementById('clientPhone').value;
+        const address = document.getElementById('clientAddress').value;
+        const device = document.getElementById('deviceType').value;
+        const desc = document.getElementById('issueDesc').value;
+        
+        // التأكد من ملء جميع الحقول
+        if (!name || !phoneInput || !address || !device || !desc) {
+            alert('الرجاء ملء جميع الحقول المطلوبة');
+            return;
+        }
+
+        // رقم هاتفك لاستقبال الطلبات
+        const myPhone = "213661314631";
+        
+        // تجهيز الرسالة لتصلك منظمة وبها كافة التفاصيل
+        const whatsappMessage = `مرحباً Ratil serviceTech، لدي طلب صيانة جديد:\n\n👤 الاسم/الصالون: ${name}\n📞 الهاتف: ${phoneInput}\n📍 العنوان: ${address}\n🔧 الجهاز: ${device}\n📝 تفاصيل العطل: ${desc}`;
+        
+        const whatsappURL = `https://wa.me/${myPhone}?text=${encodeURIComponent(whatsappMessage)}`;
+        window.open(whatsappURL, '_blank');
+    }
+    </script>
 </body>
 </html>
