@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+(() => {
   'use strict';
 
   // التحكم بالقائمة الجانبية (الجوال)
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // جلب وعرض المنتجات وقطع الغيار ديناميكياً في المتجر
   const storeContainer = document.getElementById('store-container');
   if (storeContainer) {
-    fetch('products.json')
+    fetch('/products.json')
       .then(response => response.json())
       .then(data => {
         if (data && data.items && data.items.length > 0) {
@@ -85,4 +85,4 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .catch(error => console.error('Error loading products:', error));
   }
-});
+})();
