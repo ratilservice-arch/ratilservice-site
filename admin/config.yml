@@ -1,0 +1,18 @@
+backend:
+  name: github
+  repo: ratilservice-arch/ratilservice-site
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "products"
+    label: "المنتجات وقطع الغيار"
+    folder: "content/products"
+    create: true
+    fields:
+      - {label: "اسم المنتج", name: "title", widget: "string"}
+      - {label: "السعر أو الوصف المختصر", name: "price", widget: "string"}
+      - {label: "صورة المنتج", name: "image", widget: "image"}
+      - {label: "تفاصيل المنتج", name: "description", widget: "text"}
