@@ -6,12 +6,18 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  - name: "products"
-    label: "المنتجات وقطع الغيار"
-    folder: "content/products"
-    create: true
-    fields:
-      - {label: "اسم المنتج", name: "title", widget: "string"}
-      - {label: "السعر أو الوصف المختصر", name: "price", widget: "string"}
-      - {label: "صورة المنتج", name: "image", widget: "image"}
-      - {label: "تفاصيل المنتج", name: "description", widget: "text"}
+  - name: "store"
+    label: "المتجر وقطع الغيار"
+    files:
+      - name: "products"
+        label: "المنتجات"
+        file: "products.json"
+        fields:
+          - label: "قائمة المنتجات وقطع الغيار"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "اسم المنتج", name: "title", widget: "string"}
+              - {label: "السعر أو الوصف المختصر", name: "price", widget: "string"}
+              - {label: "صورة المنتج", name: "image", widget: "image"}
+              - {label: "تفاصيل المنتج", name: "description", widget: "text"}
