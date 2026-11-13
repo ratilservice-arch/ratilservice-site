@@ -66,9 +66,10 @@
   // جلب وعرض المنتجات وقطع الغيار ديناميكياً في المتجر
   const storeContainer = document.getElementById('store-container');
   if (storeContainer) {
-    fetch('/products.json')
+    fetch('products.json')
       .then(response => response.json())
       .then(data => {
+        console.log("Loaded products data:", data); // لفحص البيانات في المتصفح
         if (data && data.items && data.items.length > 0) {
           storeContainer.innerHTML = data.items.map(item => `
             <div class="card">
