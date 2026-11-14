@@ -349,7 +349,7 @@
         <nav>
             <ul>
                 <li><a href="#home"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
-                <li><a href="#maintenance"><i class="fa-solid fa-screwdriver-wrench"></i> طلب صيانة</a></li>
+                <li><a href="maintenance.html"><i class="fa-solid fa-screwdriver-wrench"></i> طلب صيانة</a></li>
                 <li><a href="#store"><i class="fa-solid fa-store"></i> المتجر</a></li>
                 <li><a href="#articles"><i class="fa-solid fa-newspaper"></i> مقالات ونصائح</a></li>
                 <li><a href="#contact"><i class="fa-solid fa-phone"></i> تواصل معنا</a></li>
@@ -365,7 +365,7 @@
 
         <!-- أيقونات التنقل السريع -->
         <div class="quick-icons-grid">
-            <a href="#maintenance" class="icon-card">
+            <a href="maintenance.html" class="icon-card">
                 <i class="fa-solid fa-screwdriver-wrench"></i>
                 <h3>طلب صيانة</h3>
                 <span>احجز فحص أو تصليح فوري</span>
@@ -393,60 +393,20 @@
         </div>
     </section>
 
-    <!-- قسم طلب الصيانة (مع خانات الاسم، الهاتف، العنوان، الجهاز، والعطل) -->
     <section id="maintenance" class="content-section">
-        <div class="section-title">
-            <h2>طلب صيانة جهاز</h2>
-            <div class="line"></div>
-        </div>
-        <div class="maintenance-box">
+        <div class="maintenance-box" style="grid-template-columns: 1fr;">
             <div>
                 <h3 style="font-size: 1.6rem; margin-bottom: 15px;">عطل مفاجئ في جهازك؟ نحن هنا!</h3>
                 <p style="color: #4b5563; line-height: 1.8; margin-bottom: 20px;">
-                    املأ البيانات السريعة وسيتم توجيه طلبك مباشرة عبر واتساب لتحديد موعد الفحص أو التدخل التقني في أسرع وقت ممكن.
+                    املأ استمارة الصيانة وسيتم توجيه طلبك مباشرة عبر واتساب لتحديد موعد الفحص أو التدخل التقني في أسرع وقت ممكن.
                 </p>
                 <ul style="list-style: none; color: #374151; line-height: 2.2;">
                     <li><i class="fa-solid fa-check-circle" style="color: var(--primary);"></i> تشخيص دقيق للأعطال الإلكترونية والميكانيكية</li>
                     <li><i class="fa-solid fa-check-circle" style="color: var(--primary);"></i> استبدال المقابض، الفلاتر، ومضخات التبريد</li>
                     <li><i class="fa-solid fa-check-circle" style="color: var(--primary);"></i> ضمان على الصيانة وقطع الغيار</li>
                 </ul>
+                <a href="maintenance.html" class="btn-submit" style="text-decoration:none; margin-top:22px;">املأ استمارة الصيانة</a>
             </div>
-            
-            <form id="maintenanceForm" onsubmit="sendWhatsApp(event)">
-                <div class="form-group">
-                    <label>اسم الصالون أو العميل</label>
-                    <input type="text" id="clientName" required placeholder="مثال: صالون الجمال">
-                </div>
-
-                <div class="form-group">
-                    <label>رقم الهاتف</label>
-                    <input type="tel" id="clientPhone" required placeholder="مثال: 0661314631">
-                </div>
-
-                <div class="form-group">
-                    <label>العنوان / المدينة</label>
-                    <input type="text" id="clientAddress" required placeholder="مثال: وهران، الجزائر">
-                </div>
-
-                <div class="form-group">
-                    <label>نوع الجهاز</label>
-                    <select id="deviceType">
-                        <option value="جهاز ليزر إزالة الشعر">جهاز ليزر إزالة الشعر</option>
-                        <option value="جهاز هيدرافيشل (Hydrafacial)">جهاز هيدرافيشل (Hydrafacial)</option>
-                        <option value="جهاز تخسيس / كافيتيشن">جهاز تخسيس / كافيتيشن</option>
-                        <option value="جهاز عناية بالبشرة آخر">جهاز عناية بالبشرة آخر</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>وصف العطل باختصار</label>
-                    <textarea id="issueDesc" rows="3" required placeholder="اشرح المشكلة التي تظهر في الجهاز..."></textarea>
-                </div>
-
-                <button type="submit" class="btn-submit">
-                    <i class="fa-brands fa-whatsapp"></i> إرسال الطلب عبر واتساب
-                </button>
-            </form>
         </div>
     </section>
 
@@ -473,7 +433,7 @@
                     <h3>أهمية تغيير الماء المقطر في أجهزة الليزر</h3>
                     <p>تعرف على المدة المثالية لتغيير المياه المقطرة وكيف يحمي ذلك عدسة الليزر من التلف المكلف.</p>
                 </div>
-                <a href="#maintenance" class="card-btn">احجز صيانة وقائية</a>
+                <a href="maintenance.html" class="card-btn">احجز صيانة وقائية</a>
             </div>
             <div class="card">
                 <div>
@@ -501,33 +461,6 @@
         <p style="font-size: 0.85rem;">جميع الحقوق محفوظة &copy; 2026 ratilservice.com</p>
     </footer>
 
-    <!-- سكريبت إرسال الواتساب الآمن والمباشر -->
-    <script>
-    function sendWhatsApp(e) {
-        e.preventDefault();
-        
-        const name = document.getElementById('clientName').value;
-        const phoneInput = document.getElementById('clientPhone').value;
-        const address = document.getElementById('clientAddress').value;
-        const device = document.getElementById('deviceType').value;
-        const desc = document.getElementById('issueDesc').value;
-        
-        // التأكد من ملء جميع الحقول
-        if (!name || !phoneInput || !address || !device || !desc) {
-            alert('الرجاء ملء جميع الحقول المطلوبة');
-            return;
-        }
-
-        // رقم هاتفك لاستقبال الطلبات
-        const myPhone = "213661314631";
-        
-        // تجهيز الرسالة لتصلك منظمة وبها كافة التفاصيل
-        const whatsappMessage = `مرحباً Ratil serviceTech، لدي طلب صيانة جديد:\n\n👤 الاسم/الصالون: ${name}\n📞 الهاتف: ${phoneInput}\n📍 العنوان: ${address}\n🔧 الجهاز: ${device}\n📝 تفاصيل العطل: ${desc}`;
-        
-        const whatsappURL = `https://wa.me/${myPhone}?text=${encodeURIComponent(whatsappMessage)}`;
-        window.open(whatsappURL, '_blank');
-    }
-    </script>
     <script src="site.js?v=20261114-bras" defer></script>
 </body>
 </html>
