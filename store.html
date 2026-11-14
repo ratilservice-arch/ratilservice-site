@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المتجر - RATIL serviceTech</title>
+    <link rel="icon" type="image/jpeg" href="logo-icon.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root { --primary: #10b981; --text-dark: #1f2937; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        body { background: #f3f4f6; color: var(--text-dark); }
+        header { background: rgba(17, 24, 39, 0.95); padding: 14px 6%; display: flex; justify-content: space-between; align-items: center; }
+        header a { color: #fff; text-decoration: none; font-weight: 700; }
+        header img { height: 42px; }
+        main { max-width: 1100px; margin: 0 auto; padding: 36px 6% 60px; }
+        h1 { font-size: 2rem; text-align: center; }
+        .line { width: 70px; height: 4px; background: var(--primary); border-radius: 2px; margin: 12px auto 28px; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05); transition: 0.3s; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { font-size: 1.25rem; margin-bottom: 10px; }
+        .card p { color: #4b5563; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+        .card-btn { display: inline-block; text-align: center; padding: 10px 18px; background: #f3f4f6; color: var(--text-dark); text-decoration: none; border-radius: 8px; font-weight: 700; transition: 0.3s; }
+        .card-btn:hover { background: var(--primary); color: #fff; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" aria-label="العودة إلى الرئيسية"><img src="logo.jpg" alt="RATIL serviceTech"></a>
+        <a href="index.html">العودة للرئيسية</a>
+    </header>
+    <main>
+        <h1>متجر Ratil لقطع الغيار والملحقات</h1>
+        <div class="line"></div>
+        <div id="store-container" class="cards-grid"></div>
+    </main>
+    <script src="site.js?v=20261114-bras" defer></script>
+</body>
+</html>
