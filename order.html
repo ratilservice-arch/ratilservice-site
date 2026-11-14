@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب منتج - RATIL serviceTech</title>
+    <link rel="icon" type="image/jpeg" href="logo-icon.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root { --primary: #10b981; --primary-dark: #047857; --dark-bg: #111827; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        body { background: #f3f4f6; color: #1f2937; }
+        header { background: rgba(17, 24, 39, 0.95); padding: 14px 6%; display: flex; justify-content: space-between; align-items: center; }
+        header a { color: #fff; text-decoration: none; font-weight: 700; }
+        header img { height: 42px; }
+        main { max-width: 720px; margin: 0 auto; padding: 36px 6% 60px; }
+        h1 { font-size: 2rem; margin-bottom: 8px; }
+        .line { width: 70px; height: 4px; background: var(--primary); border-radius: 2px; margin: 12px 0 22px; }
+        .lead { color: #4b5563; line-height: 1.7; margin-bottom: 22px; }
+        form { background: #fff; border-radius: 20px; padding: 28px; box-shadow: 0 10px 30px rgba(0,0,0,.06); }
+        .form-group { margin-bottom: 18px; }
+        label { display: block; font-weight: 700; margin-bottom: 6px; }
+        input, textarea { width: 100%; padding: 12px 15px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 1rem; }
+        input:focus, textarea:focus { outline: none; border-color: var(--primary); }
+        input[readonly] { background: #f9fafb; }
+        button { width: 100%; padding: 14px; background: #25d366; color: #fff; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 700; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        button:hover { background: #128c7e; }
+        .note { margin-top: 12px; color: #4b5563; font-size: 0.9rem; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" aria-label="العودة إلى الرئيسية"><img src="logo.jpg" alt="RATIL serviceTech"></a>
+        <a href="index.html#store">العودة للمتجر</a>
+    </header>
+    <main>
+        <h1>طلب المنتج</h1>
+        <div class="line"></div>
+        <p class="lead">املأ بياناتك، ثم نفتح واتساب برسالة جاهزة فيها اسم المنتج ووسيلة التواصل.</p>
+        <form id="orderForm">
+            <div class="form-group">
+                <label for="productName">المنتج</label>
+                <input id="productName" name="product" type="text" readonly>
+            </div>
+            <div class="form-group">
+                <label for="customerName">اسم الصالون أو العميل</label>
+                <input id="customerName" name="name" type="text" required maxlength="80" placeholder="مثال: صالون الجمال">
+            </div>
+            <div class="form-group">
+                <label for="customerPhone">رقم الهاتف</label>
+                <input id="customerPhone" name="phone" type="tel" required maxlength="20" placeholder="مثال: 0661314631">
+            </div>
+            <div class="form-group">
+                <label for="customerCity">المدينة</label>
+                <input id="customerCity" name="city" type="text" required maxlength="80" placeholder="مثال: مستغانم">
+            </div>
+            <div class="form-group">
+                <label for="customerNote">ملاحظة</label>
+                <textarea id="customerNote" name="note" rows="3" maxlength="300" placeholder="اختياري: الكمية أو أي تفصيل"></textarea>
+            </div>
+            <button type="submit"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> إرسال الطلب عبر واتساب</button>
+            <p class="note">لن يحفظ الموقع هذه البيانات. ستفتح رسالة واتساب لتراجعها وترسلها بنفسك.</p>
+        </form>
+    </main>
+    <script>
+    const params = new URLSearchParams(location.search);
+    const productField = document.getElementById('productName');
+    const product = (params.get('product') || 'منتج من المتجر').trim().slice(0, 120);
+    productField.value = product;
+
+    document.getElementById('orderForm').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const name = document.getElementById('customerName').value.trim();
+        const phone = document.getElementById('customerPhone').value.trim();
+        const city = document.getElementById('customerCity').value.trim();
+        const note = document.getElementById('customerNote').value.trim();
+        if (!name || !phone || !city) return;
+        const message = [
+            'مرحباً RATIL serviceTech، أود طلب منتج:',
+            `المنتج: ${product}`,
+            `الاسم/الصالون: ${name}`,
+            `الهاتف: ${phone}`,
+            `المدينة: ${city}`,
+            note ? `ملاحظة: ${note}` : ''
+        ].filter(Boolean).join('\n');
+        const url = new URL('https://wa.me/213661314631');
+        url.searchParams.set('text', message);
+        window.location.assign(url.toString());
+    });
+    </script>
+</body>
+</html>

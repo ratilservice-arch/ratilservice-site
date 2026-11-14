@@ -84,10 +84,7 @@
     return images;
   };
 
-  const orderUrlFor = (title) => {
-    const message = `مرحباً RATIL serviceTech، أود طلب ${title || 'هذا المنتج'}. هل المنتج متوفر؟`;
-    return `https://wa.me/213661314631?text=${encodeURIComponent(message)}`;
-  };
+  const orderUrlFor = (title) => `order.html?product=${encodeURIComponent(title || 'منتج من المتجر')}`;
 
   const createGallery = () => {
     const style = document.createElement('style');
@@ -117,7 +114,7 @@
         </div>
         <h3 id="productGalleryTitle"></h3>
         <p data-gallery="details"></p>
-        <a class="card-btn product-gallery-order" target="_blank" rel="noopener noreferrer">اطلب المنتج</a>
+        <a class="card-btn product-gallery-order">اطلب المنتج</a>
       </div>
     `;
     document.body.append(overlay);
@@ -216,7 +213,7 @@
               ${product.details ? `<p>${escapeHtml(product.details)}</p>` : ''}
               <p style="color:#047857; font-weight:700;">اضغط الصورة لعرضها</p>
             </button>
-            <a href="${product.orderUrl}" class="card-btn" target="_blank" rel="noopener noreferrer">اطلب المنتج</a>
+            <a href="${escapeHtml(product.orderUrl)}" class="card-btn">اطلب المنتج</a>
           </div>
         `).join('');
 
