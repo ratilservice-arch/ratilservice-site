@@ -81,32 +81,19 @@
             color: var(--primary);
         }
 
-        /* الواجهة الرئيسية */
+        /* الواجهة الرئيسية كاملة الشاشة */
         .hero {
+            min-height: 100vh;
             width: 100%;
-            background: var(--dark-bg);
+            background: linear-gradient(rgba(17, 24, 39, 0.55), rgba(17, 24, 39, 0.72)),
+                        url('images/hero-banner.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 78px 0 48px;
+            padding: 100px 5% 40px;
             color: var(--text-light);
-        }
-
-        .hero-banner {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-
-        .hero-copy {
-            width: 100%;
-            max-width: 1100px;
-            padding: 36px 5% 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         .hero-badge {
@@ -372,8 +359,6 @@
 
     <!-- الواجهة الرئيسية كاملة الشاشة -->
     <section id="home" class="hero">
-        <img class="hero-banner" src="images/hero-banner.jpg" alt="RATIL serviceTech — صيانة وإصلاح وبيع أجهزة التجميل">
-        <div class="hero-copy">
         <div class="hero-badge">المركز المتخصص لصيانة أجهزة التجميل والعناية بالبشرة</div>
         <h1>خلي صالونك ديما جديد مع <span>Ratil</span></h1>
         <p>نضمن استمرارية عمل أجهزة صالونك بأعلى كفاءة ودقة. صيانة احترافية، قطع غيار أصلية، ومتابعة تقنية موثوقة لجميع أجهزة التجميل والليزر.</p>
@@ -405,7 +390,6 @@
                 <h3>استشارة سريعة</h3>
                 <span>تواصل مباشر مع التقني</span>
             </a>
-        </div>
         </div>
     </section>
 
