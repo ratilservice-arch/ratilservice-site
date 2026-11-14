@@ -214,7 +214,7 @@
               <h3>${escapeHtml(product.title)}</h3>
               ${product.price ? `<p style="color:var(--primary); font-weight:700; margin-bottom:10px;">${escapeHtml(product.price)}</p>` : ''}
               ${product.details ? `<p>${escapeHtml(product.details)}</p>` : ''}
-              ${product.images.length > 1 ? `<p>اضغط لعرض ${product.images.length} صور</p>` : ''}
+              <p style="color:#047857; font-weight:700;">اضغط الصورة لعرضها</p>
             </button>
             <a href="${product.orderUrl}" class="card-btn" target="_blank" rel="noopener noreferrer">اطلب المنتج</a>
           </div>
