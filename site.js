@@ -70,18 +70,34 @@
       .then(response => response.json())
       .then(data => {
         console.log("Loaded products data:", data); // لفحص البيانات في المتصفح
+        const escapeHtml = (value) => String(value ?? '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
         if (data && data.items && data.items.length > 0) {
-          storeContainer.innerHTML = data.items.map(item => `
+          storeContainer.innerHTML = data.items.map(item => {
+            const title = typeof item.title === 'string' ? item.title.trim() : '';
+            const price = typeof item.price === 'string' ? item.price.trim() : '';
+            const details = typeof item.description === 'string' ? item.description.trim() : '';
+            const image = typeof item.image === 'string' ? item.image.trim() : '';
+            const safeImage = image.startsWith('/') && !image.includes('..') && /\.(?:jpe?g|png|webp)$/i.test(image)
+              ? image
+              : '';
+            const message = `مرحباً RATIL serviceTech، أود طلب ${title || 'هذا المنتج'}. هل المنتج متوفر؟`;
+            const orderUrl = `https://wa.me/213661314631?text=${encodeURIComponent(message)}`;
+            return `
             <div class="card">
               <div>
-                ${item.image ? `<div style="margin-bottom:15px; border-radius:12px; overflow:hidden; height:180px;"><img src="${item.image}" alt="${item.title}" style="width:100%; height:100%; object-fit:cover;"></div>` : ''}
-                <h3>${item.title}</h3>
-                ${item.price ? `<p style="color:var(--primary); font-weight:700; margin-bottom:10px;">${item.price}</p>` : ''}
-                <p>${item.description || ''}</p>
+                ${safeImage ? `<div style="margin-bottom:15px; border-radius:12px; overflow:hidden; height:180px;"><img src="${escapeHtml(safeImage)}" alt="${escapeHtml(title)}" style="width:100%; height:100%; object-fit:cover;"></div>` : ''}
+                <h3>${escapeHtml(title)}</h3>
+                ${price ? `<p style="color:var(--primary); font-weight:700; margin-bottom:10px;">${escapeHtml(price)}</p>` : ''}
+                ${details ? `<p>${escapeHtml(details)}</p>` : ''}
               </div>
-              <a href="#maintenance" class="card-btn">اطلب القطعة الآن</a>
+              <a href="${orderUrl}" class="card-btn" target="_blank" rel="noopener noreferrer">اطلب المنتج</a>
             </div>
-          `).join('');
+          `;
+          }).join('');
         }
       })
       .catch(error => console.error('Error loading products:', error));
