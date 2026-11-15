@@ -187,7 +187,7 @@
   const storeContainer = document.getElementById('store-container');
   if (storeContainer) {
     const gallery = createGallery();
-    fetch('products.json?v=20261115-spray', { cache: 'no-store' })
+    fetch('products.json?v=20261115-cold', { cache: 'no-store' })
       .then(response => response.json())
       .then(data => {
         if (!data || !Array.isArray(data.items) || data.items.length === 0) return;
@@ -206,7 +206,7 @@
           <div class="card">
             <button type="button" class="product-open" data-product-index="${productIndex}" style="display:block; width:100%; padding:0; border:0; background:transparent; text-align:inherit; cursor:pointer; font:inherit; color:inherit;">
               <div style="margin-bottom:15px; border-radius:12px; overflow:hidden; height:180px;">
-                <img src="${escapeHtml(product.images[0])}" alt="${escapeHtml(product.title)}" style="width:100%; height:100%; object-fit:cover;">
+                <img src="${escapeHtml(product.images[0])}" alt="${escapeHtml(product.title)}" style="width:100%; height:100%; object-fit:contain;">
               </div>
               <h3>${escapeHtml(product.title)}</h3>
               ${product.price ? `<p style="color:var(--primary); font-weight:700; margin-bottom:10px;">${escapeHtml(product.price)}</p>` : ''}
