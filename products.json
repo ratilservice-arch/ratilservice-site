@@ -1,6 +1,11 @@
 {
   "items": [
     {
+      "title": "bouteille",
+      "price": "5000 دج",
+      "image": "/images/uploads/bouteille.jpg"
+    },
+    {
       "title": "bras Rf",
       "image": "/images/uploads/bras-rf.jpg",
       "description": "اصلي"
