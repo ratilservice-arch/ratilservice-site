@@ -187,7 +187,7 @@
   const storeContainer = document.getElementById('store-container');
   if (storeContainer) {
     const gallery = createGallery();
-    fetch('products.json?v=20261115-h14', { cache: 'no-store' })
+    fetch('products.json?v=20261115-support', { cache: 'no-store' })
       .then(response => response.json())
       .then(data => {
         if (!data || !Array.isArray(data.items) || data.items.length === 0) return;
