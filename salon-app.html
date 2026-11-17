@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق الصالون — راتيل برو</title>
+    <meta name="description" content="تطبيق راتيل برو لتسجيل أجهزة الصالون، إرسالها للصيانة، ومتابعة حالة الإصلاح.">
+    <link rel="icon" type="image/jpeg" href="logo-icon.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #10b981;
+            --primary-dark: #047857;
+            --dark-bg: #111827;
+            --text-dark: #1f2937;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        body { background: #f3f4f6; color: var(--text-dark); }
+        header {
+            position: sticky; top: 0; width: 100%; padding: 12px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(17, 24, 39, 0.95); z-index: 10;
+        }
+        .logo-container img { height: 45px; object-fit: contain; }
+        nav a { color: #e5e7eb; text-decoration: none; font-weight: 700; }
+        main { width: min(880px, 100%); margin: 0 auto; padding: 36px 5% 64px; }
+        .intro {
+            background: var(--dark-bg); color: #f9fafb; border-radius: 22px;
+            padding: 36px 28px; margin-bottom: 28px;
+        }
+        .intro p { color: #d1d5db; line-height: 1.8; margin-top: 12px; }
+        h1 { font-size: 2rem; }
+        h2 { margin-bottom: 16px; }
+        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .service {
+            background: #fff; border-radius: 16px; padding: 22px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+        }
+        .service i { color: var(--primary); font-size: 1.5rem; }
+        .service h3 { margin: 10px 0 6px; }
+        .service p { color: #4b5563; line-height: 1.7; }
+        .open-box { margin-top: 28px; text-align: center; }
+        .open-link {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--primary); color: #fff; text-decoration: none;
+            font-weight: 800; font-size: 1.15rem; padding: 16px 28px; border-radius: 14px;
+        }
+        .open-link:hover { background: var(--primary-dark); }
+        .hint { margin-top: 14px; color: #4b5563; line-height: 1.7; }
+        footer { background: var(--dark-bg); color: #9ca3af; text-align: center; padding: 24px 5%; }
+    </style>
+</head>
+<body>
+    <header>
+        <a class="logo-container" href="index.html"><img src="logo.jpg" alt="RATIL serviceTech"></a>
+        <nav><a href="index.html"><i class="fa-solid fa-house"></i> الرئيسية</a></nav>
+    </header>
+    <main>
+        <section class="intro">
+            <h1>تطبيق الصالون — راتيل برو</h1>
+            <p>تطبيق للصالون على الهاتف. يسجّل صاحب الصالون أجهزته، يرسل الجهاز الذي يحتاج صيانة، ويتابع حالته حتى يعود إليه. يعمل من أي مكان بعد فتح الرابط، ويمكن إضافته إلى الشاشة الرئيسية ليظهر كأيقونة.</p>
+        </section>
+        <h2>ماذا يقدّم التطبيق</h2>
+        <div class="services">
+            <article class="service">
+                <i class="fa-solid fa-shop"></i>
+                <h3>بيانات الصالون</h3>
+                <p>يحفظ اسم الصالون ورقم الهاتف والعنوان، وتُستخدم هذه البيانات عند إرسال جهاز للصيانة.</p>
+            </article>
+            <article class="service">
+                <i class="fa-solid fa-toolbox"></i>
+                <h3>الأجهزة المسجّلة</h3>
+                <p>يسجّل كل جهاز بنوعه ورقمه التسلسلي. بعد التسجيل يبقى الجهاز في ملف الصالون.</p>
+            </article>
+            <article class="service">
+                <i class="fa-solid fa-truck-fast"></i>
+                <h3>إرسال جهاز للصيانة</h3>
+                <p>يختار الجهاز ويكتب وصف العطل، ثم يحصل على رقم تتبّع تسلسلي يبدأ من 2026/01.</p>
+            </article>
+            <article class="service">
+                <i class="fa-solid fa-route"></i>
+                <h3>متابعة الإصلاح</h3>
+                <p>يرى حالة الجهاز: الشحن إلى الورشة، تم الاستلام، قيد الإصلاح، ثم جاهز وأُعيد الشحن، مع تاريخ كل حالة.</p>
+            </article>
+            <article class="service">
+                <i class="fa-solid fa-store"></i>
+                <h3>المتجر</h3>
+                <p>من داخل التطبيق يمكن الانتقال مباشرة إلى متجر قطع الغيار في الموقع.</p>
+            </article>
+        </div>
+        <div class="open-box">
+            <a class="open-link" href="https://ratil-pro.netlify.app" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                فتح تطبيق الصالون
+            </a>
+            <p class="hint">بعد الفتح من هاتف الزبون، يمكن إضافته إلى الشاشة الرئيسية من قائمة المتصفح. اسم الأيقونة: راتيل برو.</p>
+        </div>
+    </main>
+    <footer>جميع الحقوق محفوظة &copy; 2026 ratilservice.com</footer>
+</body>
+</html>
