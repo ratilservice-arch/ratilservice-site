@@ -86,6 +86,15 @@
 
   const orderUrlFor = (title) => `order.html?product=${encodeURIComponent(title || 'منتج من المتجر')}`;
 
+  const productSlug = (title) => title
+    .trim()
+    .toLowerCase()
+    .replace(/[\\/]+/g, '-')
+    .replace(/\s+/g, '-')
+    .replace(/[^\p{L}\p{N}-]+/gu, '')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+
   const createGallery = () => {
     const style = document.createElement('style');
     style.textContent = `
@@ -154,11 +163,14 @@
       overlay.querySelector('.product-gallery-close').focus();
     };
 
+    let afterClose = () => {};
+
     const close = () => {
       overlay.classList.remove('is-open');
       document.body.style.overflow = '';
       photo.removeAttribute('src');
       if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+      afterClose();
     };
 
     overlay.addEventListener('click', (event) => {
@@ -180,31 +192,62 @@
       if (event.key === 'ArrowRight') prev.click();
     });
 
-    return { open };
+    return { open, close, onClose: (callback) => { afterClose = callback; } };
   };
 
   // جلب وعرض المنتجات وقطع الغيار ديناميكياً في المتجر
   const storeContainer = document.getElementById('store-container');
   if (storeContainer) {
     const gallery = createGallery();
-    fetch('products.json?v=20261115-support', { cache: 'no-store' })
+    fetch('products.json?v=20261118-links', { cache: 'no-store' })
       .then(response => response.json())
       .then(data => {
         if (!data || !Array.isArray(data.items) || data.items.length === 0) return;
+        const usedSlugs = new Set();
         const products = data.items.map((item) => {
           const title = typeof item.title === 'string' ? item.title.trim() : '';
+          let slug = productSlug(title) || 'product';
+          if (usedSlugs.has(slug)) {
+            let copy = 2;
+            while (usedSlugs.has(`${slug}-${copy}`)) copy += 1;
+            slug = `${slug}-${copy}`;
+          }
+          usedSlugs.add(slug);
           return {
             title,
+            slug,
             price: typeof item.price === 'string' ? item.price.trim() : '',
             details: typeof item.description === 'string' ? item.description.trim() : '',
             images: productImages(item),
-            orderUrl: orderUrlFor(title)
+            orderUrl: orderUrlFor(title),
+            link: `store.html?item=${encodeURIComponent(slug)}`
           };
         }).filter((product) => product.title && product.images.length);
 
-        storeContainer.innerHTML = products.map((product, productIndex) => `
+        const productUrl = (product) => {
+          const url = new URL('store.html', location.href);
+          url.search = '';
+          url.searchParams.set('item', product.slug);
+          return `${url.pathname}${url.search}`;
+        };
+
+        const openProduct = (product, pushHistory) => {
+          gallery.open(product);
+          if (!pushHistory) return;
+          const next = productUrl(product);
+          if (`${location.pathname}${location.search}` !== next) {
+            history.pushState({ item: product.slug }, '', next);
+          }
+        };
+
+        const productFromLocation = () => {
+          const slug = new URLSearchParams(location.search).get('item');
+          return products.find((product) => product.slug === slug) || null;
+        };
+
+        storeContainer.innerHTML = products.map((product) => `
           <div class="card">
-            <button type="button" class="product-open" data-product-index="${productIndex}" style="display:block; width:100%; padding:0; border:0; background:transparent; text-align:inherit; cursor:pointer; font:inherit; color:inherit;">
+            <a class="product-open" href="${escapeHtml(product.link)}" style="display:block; width:100%; padding:0; border:0; background:transparent; text-align:inherit; cursor:pointer; font:inherit; color:inherit; text-decoration:none;">
               <div style="margin-bottom:15px; border-radius:12px; overflow:hidden; height:180px;">
                 <img src="${escapeHtml(product.images[0])}" alt="${escapeHtml(product.title)}" style="width:100%; height:100%; object-fit:contain;">
               </div>
@@ -212,7 +255,7 @@
               ${product.price ? `<p style="color:var(--primary); font-weight:700; margin-bottom:10px;">${escapeHtml(product.price)}</p>` : ''}
               ${product.details ? `<p>${escapeHtml(product.details)}</p>` : ''}
               <p style="color:#047857; font-weight:700;">اضغط الصورة لعرضها</p>
-            </button>
+            </a>
             <a href="${escapeHtml(product.orderUrl)}" class="card-btn">اطلب المنتج</a>
           </div>
         `).join('');
@@ -220,9 +263,26 @@
         storeContainer.addEventListener('click', (event) => {
           const opener = event.target.closest('.product-open');
           if (!opener) return;
-          const product = products[Number(opener.dataset.productIndex)];
-          if (product) gallery.open(product);
+          event.preventDefault();
+          const product = products.find((entry) => entry.link === opener.getAttribute('href'));
+          if (product) openProduct(product, true);
         });
+
+        gallery.onClose(() => {
+          if (!new URLSearchParams(location.search).has('item')) return;
+          const url = new URL('store.html', location.href);
+          url.search = '';
+          history.pushState({}, '', `${url.pathname}${url.search}`);
+        });
+
+        window.addEventListener('popstate', () => {
+          const product = productFromLocation();
+          if (product) gallery.open(product);
+          else gallery.close();
+        });
+
+        const requested = productFromLocation();
+        if (requested) openProduct(requested, false);
       })
       .catch(error => console.error('Error loading products:', error));
   }
