@@ -198,8 +198,7 @@
   // جلب وعرض المنتجات وقطع الغيار ديناميكياً في المتجر
   const storeContainer = document.getElementById('store-container');
   if (storeContainer) {
-    const gallery = createGallery();
-    fetch('products.json?v=20261118-links', { cache: 'no-store' })
+    fetch('products.json?v=20261118-product', { cache: 'no-store' })
       .then(response => response.json())
       .then(data => {
         if (!data || !Array.isArray(data.items) || data.items.length === 0) return;
@@ -224,65 +223,40 @@
           };
         }).filter((product) => product.title && product.images.length);
 
-        const productUrl = (product) => {
-          const url = new URL('store.html', location.href);
-          url.search = '';
-          url.searchParams.set('item', product.slug);
-          return `${url.pathname}${url.search}`;
-        };
+        const requestedSlug = new URLSearchParams(location.search).get('item');
+        const requested = products.find((product) => product.slug === requestedSlug);
 
-        const openProduct = (product, pushHistory) => {
-          gallery.open(product);
-          if (!pushHistory) return;
-          const next = productUrl(product);
-          if (`${location.pathname}${location.search}` !== next) {
-            history.pushState({ item: product.slug }, '', next);
-          }
-        };
-
-        const productFromLocation = () => {
-          const slug = new URLSearchParams(location.search).get('item');
-          return products.find((product) => product.slug === slug) || null;
-        };
+        if (requested) {
+          const pageTitle = document.getElementById('store-title');
+          if (pageTitle) pageTitle.textContent = requested.title;
+          document.title = `${requested.title} - RATIL serviceTech`;
+          storeContainer.classList.remove('cards-grid');
+          storeContainer.innerHTML = `
+            <article class="card" style="max-width:760px; margin:0 auto;">
+              <img src="${escapeHtml(requested.images[0])}" alt="${escapeHtml(requested.title)}" style="display:block; width:100%; max-height:70vh; object-fit:contain; background:#f9fafb; border-radius:12px; margin-bottom:18px;">
+              <h2 style="font-size:1.8rem; margin-bottom:10px;">${escapeHtml(requested.title)}</h2>
+              ${requested.price ? `<p style="color:var(--primary); font-weight:700; font-size:1.2rem; margin-bottom:10px;">${escapeHtml(requested.price)}</p>` : ''}
+              ${requested.details ? `<p>${escapeHtml(requested.details)}</p>` : ''}
+              <a href="${escapeHtml(requested.orderUrl)}" class="card-btn" style="background:#25d366; color:#fff;">اطلب المنتج</a>
+              <a href="store.html" class="card-btn" style="margin-top:12px;">العودة للمتجر</a>
+            </article>
+          `;
+          return;
+        }
 
         storeContainer.innerHTML = products.map((product) => `
           <div class="card">
-            <a class="product-open" href="${escapeHtml(product.link)}" style="display:block; width:100%; padding:0; border:0; background:transparent; text-align:inherit; cursor:pointer; font:inherit; color:inherit; text-decoration:none;">
+            <a class="product-open" href="${escapeHtml(product.link)}" style="display:block; width:100%; color:inherit; text-decoration:none;">
               <div style="margin-bottom:15px; border-radius:12px; overflow:hidden; height:180px;">
                 <img src="${escapeHtml(product.images[0])}" alt="${escapeHtml(product.title)}" style="width:100%; height:100%; object-fit:contain;">
               </div>
               <h3>${escapeHtml(product.title)}</h3>
               ${product.price ? `<p style="color:var(--primary); font-weight:700; margin-bottom:10px;">${escapeHtml(product.price)}</p>` : ''}
               ${product.details ? `<p>${escapeHtml(product.details)}</p>` : ''}
-              <p style="color:#047857; font-weight:700;">اضغط الصورة لعرضها</p>
             </a>
             <a href="${escapeHtml(product.orderUrl)}" class="card-btn">اطلب المنتج</a>
           </div>
         `).join('');
-
-        storeContainer.addEventListener('click', (event) => {
-          const opener = event.target.closest('.product-open');
-          if (!opener) return;
-          event.preventDefault();
-          const product = products.find((entry) => entry.link === opener.getAttribute('href'));
-          if (product) openProduct(product, true);
-        });
-
-        gallery.onClose(() => {
-          if (!new URLSearchParams(location.search).has('item')) return;
-          const url = new URL('store.html', location.href);
-          url.search = '';
-          history.pushState({}, '', `${url.pathname}${url.search}`);
-        });
-
-        window.addEventListener('popstate', () => {
-          const product = productFromLocation();
-          if (product) gallery.open(product);
-          else gallery.close();
-        });
-
-        const requested = productFromLocation();
-        if (requested) openProduct(requested, false);
       })
       .catch(error => console.error('Error loading products:', error));
   }
